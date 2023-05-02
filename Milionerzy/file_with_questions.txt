@@ -1,0 +1,300 @@
+Który instrument stroi muzyk?
+okarynê;
+czynele;
+tamburyn;
+kocio³;;
+True;;;
+Z gry na jakim instrumencie s³ynie Czes³aw Mozil?
+na kornecie;
+na akordeonie;;
+na djembe;
+na ksylofonie;
+True;;;
+Ile to jest 1111 razy 1111, jeœli 1 razy 1 to 1, a 11 razy 11 to 121?
+123 434 321;
+111 111 111;
+123 21;
+1 234 321;;
+True;;;
+Kto jest mistrzem tego samego orê¿a, w jakim specjalizowa³a siê mitologiczna Artemida?
+Don Kichot;
+Zorro;
+Longinius Podbipiêta;
+Legolas;;
+False;;;
+Komiksowym "dzieckiem" rysownika Boba Kane'a jest:
+Batman;;
+Capitan America;
+Spider-Man;
+Superman;
+True;;;
+Sk¹d pochodzi³ Conan Barbarzyñca?
+z Cimmerii;;
+z Oz;
+z Mordoru;
+z Rivii;
+True;;;
+Co wed³ug Leszka Ko³akowskiego jest sklepieniem domu, w którym duch ludzki mieszka?
+Bóg;
+Rozum;
+Czas;;
+Mi³oœæ;
+True;;;
+Odra¿aj¹cy drab z Kabaretu Starszych Panów dubeltówkê weŸmie, wyjdzie i...:
+z rur dwóch;
+rach-ciach;
+buch, buch;;
+bum w brzuch;
+True;;;
+Który aktor urodzi³ siê w roku opatentowania kinematografu braci Lumiere?
+Humphrey Bogart;
+Fred Astaire;
+Rudolph Valentino;;
+Charlie Chaplin;
+False;;;
+Mowa w obronie poety Archiasza przesz³a do historii jako jeden z najœwietniejszych popisów retorycznych:
+Izokratesa;
+Demostenesa;
+Cycerona;;
+Kwintyliana;
+False;;;
+Likier maraskino produkuje siê z maraski, czyli odmiany:
+jab³oni;
+figi;
+gruszy;
+wiœni;;
+False;;;
+Który utwór Juliusza S³owackiego napisany jest proz¹?
+"Godzina myœli";
+"W Szwajcarii";
+"Arab";
+"Anhelli";;
+False;;;
+"W¹tróbka z cebulk¹ (...) jest zak¹sk¹ doskona³¹. Aby j¹ przyrz¹dziæ, nale¿y kupiæ samochód i pêdziæ nim póty, a¿ siê kogoœ przejedzie". To Lem i...
+"Szpital przemienienia";
+"Dyktanda, czyli...";;
+"Opowieœci o pilocie Pirxie";
+"Solaris";
+False;;;
+Który ssak siê nie spoci?
+Cz³owiek;
+Owca;
+Koñ;
+Królik;;
+True;;;
+Ró¿añcow¹ tajemnic¹ chwalebn¹ nie jest...
+Œmieræ Jezusa na krzy¿u;;
+Zes³anie Ducha Œwiêtego;
+Wniebowziêcie Matki Bo¿ej;
+Zmartwychwstanie Jezusa;
+True;;;
+W czyim domu nie mówi siê o sznurze?
+powieszonego;;
+linoskoczka;
+praczki;
+powroŸnika;
+False;;;
+Na akord mo¿na:
+spaæ;
+podró¿owaæ;
+œpiewaæ;
+pracowaæ;;
+False;;;
+Naczynie z sitkiem:
+³y¿ka cedzakowa;
+konewka;;
+maszynka do miêsa;
+prysznic;
+False;;;
+Jak to dalej sz³o? "Góralu, czy ci nie ¿al..."
+na wódkê wydawaæ szmal;
+regli zostawiaæ lesistych;
+porzucaæ lasów i hal;
+odchodziæ od stron ojczystych;;
+False;;;
+Suspens to chwyt stosowany:
+we wspinaczce klasycznej;
+w filmach;;
+w zapasach;
+w grze na gitarze;
+False;;;
+Co kaftan bezpieczeñstwa ma znacznie d³u¿sze ni¿ zwyk³y kaftan?
+przód;
+rêkawy;;
+ty³;
+ko³nierz;
+False;;;
+"Musisz przyznaæ, ¿e jak tatuœ zrobi dzióbek to nie ma (mhm mhm) we wsi" - mówi Adaœ Miauczyñski:
+poprawiaj¹c synowi kaptur;;
+demonstruj¹c selfie;
+sk³adaj¹c origami;
+garniruj¹c drób;
+False;;;
+"Opowiem ci bajkê, jak kot pali³ fajkê, a kocica papierosa...
+kociêta zaœ skrêta".;
+w fifce, byle dalej nosa".;
+te koty zesz³y z drogi cnoty".;
+upali³a kawa³ nosa".;;
+False;;;
+Trzy z czterech nazw odnosz¹ siê do tego samego oceanu. Która go nie dotyczy?
+Pacyfik;
+Spokojny;
+Ocean Wielki;
+Atlantyk;;
+True;;;
+Co ukoi nerwy i zast¹pi cytrynê?
+ziele angielskie;
+jaskó³cze ziele;
+melisa lekarska;;
+miêta pieprzowa;
+False;;;
+W piosence Dwa plus Jeden pada propozycja: "ChodŸ pomaluj mój œwiat...
+na ¿ó³to i na niebiesko";;
+niech wygl¹da jak kwiat";
+bo œwiat jest dziœ pod kresk¹";
+mam ju¿ doœæ szarych krat";
+False;;;
+Co jest tradycyjnym œrodkiem transportu amiszów?
+zaprzêg;;
+motorówka;
+motocykl;
+œnie¿ny skuter;
+False;;;
+Pêd wyros³y z nieuszlachetnionej podk³adki to:
+wilk albo dzik;;
+kot albo pies;
+baran albo kozio³;
+koñ albo krowa;
+True;;;
+Tytu³owa wataha z serialu wyre¿yserowanego m.in. przez Kasiê Adamik to:
+wilcza rodzina;
+rosyjscy szpiedzy;
+stra¿nicy graniczni;;
+uchodŸcy ze Wschodu;
+False;;;
+Których bierek w bierkach jest najwiêcej?
+bosaków;
+wiose³;
+trójzêbów;
+oszczepów;;
+True;;;
+W jakiej bitwie mia³ swój udzia³ s³awny w Polsce i Szkocji kapral niedŸwiedŸ o imieniu Wojtek?
+pod Monte Cassino;;
+pod Grunwaldem;
+pod Wiedniem;
+o Angliê;
+False;;;
+Aorta wychodzi z lewej komory serca, a koñczy siê:
+w prawej komorze;
+w jamie brzusznej;;
+w mózgu;
+w p³ucach;
+True;;;
+Autor dwóch pozycji - "Ksi¹¿ki, któr¹ napisa³em, ¿eby mieæ na dziwki i narkotyki" i "Ksi¹¿ki, któr¹ napisa³em, ¿eby mieæ na odwyk" to:
+Marek Raczkowski;;
+Maciej Maleñczuk;
+Witkacy;
+Kamil Durczok;
+False;;;
+Symbol waluty euro to stylizowana litera grecka. Która?
+epsilon;
+heta;
+beta;
+eta;
+False;;;
+Za 30 judaszowych srebrników arcykap³ani kupili kawa³ek ziemi nazywany Polem Garncarza, który przeznaczyli na:
+targowisko;
+plantacjê oliwek;
+wybieg dla lwów;
+cmentarz dla cudzoziemców;;
+True;;;
+Jaka moneta by³a op³at¹ dla przewoŸnika w Hadesie?
+obol;;
+talar;
+dukat;
+dinar;
+True;;;
+Jak nazywa siê wódka pêdzona ze œliwek?
+rakija;;
+sake;
+alasz;
+tokaja;
+False;;;
+Jaka nauka okreœlana jest jako "nauczycielka ¿ycia"?
+filozofia;
+geografia;
+fizyka;
+historia;;
+True;;;
+Attyka, Epir, Tesalia, to regiony którego pañstwa?
+Grecji;;
+Hiszpanii;
+W³och;
+Turcji;
+False;;;
+Listwa biegn¹ca wzd³u¿ krawêdzi pok³adu jachtu i wystaj¹ca na kilka centymetrów ponad pok³ad, to:
+Nadburta;
+Listwa odbojowa;
+Bakburta;
+Reling;;
+True;;;
+Ile strun ma altówka?
+5;
+4;;
+3;
+6;
+True;;;
+W hymnie którego pañstwa jest wzmianka o Polsce?
+Szwecji;
+USA;
+Hiszpanii;
+W³och;;
+False;;;
+Topiarz fryty to pracownik:
+Huty;;
+Baru szybkiej obs³ugi;
+Gospodarstwa rybackiego;
+Kopalni;
+False;;;
+Która para zawodników bierze udzia³ w zawodach hippicznych?
+Kierowca i pilot;
+Treser i pies;
+Wioœlarz i sternik;
+JeŸdziec i koñ;;
+False;;;
+Jezioro Bajka³ jest:
+Najg³êbszym jeziorem na œwiecie;;
+Najwiêkszym jeziorem na œwiecie;
+Najmniejszym jeziorem w Azji;
+Najcieplejszym jeziorem w Rosji;
+False;;;
+Do organizmów jednokomórkowych zaliczamy:
+Pierœcienice;
+G¹bki;
+Dro¿d¿e;;
+Nowotwory;
+True;;;
+Który aktor, spoœród wymienionych, najczêœciej wciela³ siê w postaæ Jamesa Bonda?
+Sean Connery;
+Pierce Brosnan;
+George Lazenby;
+Roger Moore;;
+False;;;
+Najwy¿szy szczyt pasma Karakorum, to:
+K2;;
+Kilimand¿aro;
+Mount Everest;
+Mount Blanc;
+False;;;
+Bouillabaisse to potrawa, z której s³ynie:
+Bordeaux;
+Marsylia;;
+Wenecja;
+Genua;
+True;;;
+Kto by³ pierwszym królem Zjednoczonych W³och?
+Wiktor Emanuel II;;
+Fryderyk II;
+Karol V;
+Miko³aj I;
+True;;;
