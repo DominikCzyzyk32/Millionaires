@@ -33,7 +33,7 @@ class Languages(Base):
 class Questions(Base):
     __tablename__ = 'Questions'
     id = Column(Integer, primary_key=True)
-    original_language_id = Column(Integer, ForeignKey("Languages.id"))
+    language_id = Column(Integer, ForeignKey("Languages.id"))
     question = Column(String(500))
     correct_answer = Column(String(50))
     wrong_answer_1 = Column(String(50))
@@ -42,23 +42,23 @@ class Questions(Base):
     used = Column(Boolean, unique=False, default=False)
 
     def __repr__(self):
-        return "<Questions(id={0}, original_language_id={1}, question={2}, correct_answer={3}, wrong_answer_1={4}, wrong_answer_2={5}, wrong_answer_3={6}, used={7})>".format(
-            self.id, self.original_language_id, self.question, self.correct_answer, self.wrong_answer_1, self.wrong_answer_2, self.wrong_answer_3, self.used)
+        return "<Questions(id={0}, language_id={1}, question={2}, correct_answer={3}, wrong_answer_1={4}, wrong_answer_2={5}, wrong_answer_3={6}, used={7})>".format(
+            self.id, self.language_id, self.question, self.correct_answer, self.wrong_answer_1, self.wrong_answer_2, self.wrong_answer_3, self.used)
     
-class QuestionTranslations(Base):
-    __tablename__ = 'QuestionTranslations'
-    id = Column(Integer, primary_key=True)
-    question_id = Column(Integer, ForeignKey("Questions.id"))
-    language_id = Column(Integer, ForeignKey("Languages.id"))
-    question = Column(String(500))
-    correct_answer = Column(String(50))
-    wrong_answer_1 = Column(String(50))
-    wrong_answer_2 = Column(String(50))
-    wrong_answer_3 = Column(String(50))
+# class QuestionTranslations(Base):
+#     __tablename__ = 'QuestionTranslations'
+#     id = Column(Integer, primary_key=True)
+#     question_id = Column(Integer, ForeignKey("Questions.id"))
+#     language_id = Column(Integer, ForeignKey("Languages.id"))
+#     question = Column(String(500))
+#     correct_answer = Column(String(50))
+#     wrong_answer_1 = Column(String(50))
+#     wrong_answer_2 = Column(String(50))
+#     wrong_answer_3 = Column(String(50))
 
-    def __repr__(self):
-        return "<QuestionTranslations(id={0}, question_id={1}, language_id={2}, question={3}, correct_answer={4}, wrong_answer_1={5}, wrong_answer_2={6}, wrong_answer_2={7})>".format(
-            self.id, self.question_id, self.language_id, self.question, self.correct_answer, self.wrong_answer_1, self.wrong_answer_2, self.wrong_answer_3)
+#     def __repr__(self):
+#         return "<QuestionTranslations(id={0}, question_id={1}, language_id={2}, question={3}, correct_answer={4}, wrong_answer_1={5}, wrong_answer_2={6}, wrong_answer_2={7})>".format(
+#             self.id, self.question_id, self.language_id, self.question, self.correct_answer, self.wrong_answer_1, self.wrong_answer_2, self.wrong_answer_3)
 
 
 def db_init():
@@ -83,7 +83,7 @@ def db_init():
     # insert original text content
     app_content_query = insert(app_content).values(
     [
-        {'tag': 'rules', 'original_text': 
+        {'tag': 'rules', 'text': 
         'Zasady: \n'
         'Twoim zadaniem jest odpowiedzieć poprawnie kolejno na dwanaście zamkniętych pytań z odpowiedziami A, B, C, D.\n'
         'Wartość każdego pytania będzie się wyświetlała w prawym dolnym rogu aplikacji.\n'
@@ -98,28 +98,28 @@ def db_init():
         '* pytanie do publiczności - gracz otrzymuje wykres słupkowy przedstawiający wynik głosowania publiczności w studiu\n\n'
         'Życzymy miłej gry i dużej wygranej :)...', 
         'language_id': language_id},
-        {'tag': 'button_text', 'original_text': 'Rozpocznij grę', 'language_id': language_id},
-        {'tag': 'group_box_name', 'original_text': 'Zasady', 'language_id': language_id},
-        {'tag': 'MainWindowTitle', 'original_text': 'Milionerzy', 'language_id': language_id},
-        {'tag': 'fifty_fifty_button_text', 'original_text': '50 / 50', 'language_id': language_id},
-        {'tag': 'call_friend_button_text', 'original_text': 'Telefon do przyjaciela', 'language_id': language_id},
-        {'tag': 'ask_audience_button_text', 'original_text': 'Pytanie do publiczności', 'language_id': language_id},
-        {'tag': 'start_game_button_text', 'original_text': 'Rozpocznij grę', 'language_id': language_id},
-        {'tag': 'MillionairesGroupBoxTitle', 'original_text': 'Pytanie', 'language_id': language_id},
-        {'tag': 'TakingDecisionGroupBoxTitle', 'original_text': 'Czy chcesz grać dalej?', 'language_id': language_id},
-        {'tag': 'LifebuoysGroupBoxTitle', 'original_text': 'Koła ratunkowe', 'language_id': language_id},
-        {'tag': 'ValueOfQuestionGroupBoxTitle', 'original_text': 'Wartość pytania', 'language_id': language_id},
-        {'tag': 'FinalResultGroupBoxTitle', 'original_text': 'Wynik gry', 'language_id': language_id},
-        {'tag': 'textbox_checking_correctness_correct_answer', 'original_text': 'Brawo, to jest poprawna odpowiedź! :)', 'language_id': language_id},
-        {'tag': 'textbox_checking_correctness_wrong_answer', 'original_text': 'Niestety, jest to zła odpowiedź! :(\nPoprawną odpowiedzią była odpowiedź ', 'language_id': language_id},
-        {'tag': 'textbox_checking_correctness_no_answer', 'original_text': 'Poprawną odpowiedzią była odpowiedź ', 'language_id': language_id},
-        {'tag': 'textbox_final_result_victory', 'original_text': 'Wygrałeś/łaś ', 'language_id': language_id},
-        {'tag': 'textbox_final_result_no_victory', 'original_text': 'Niestety nic dziś nie wygrałeś/łaś :(', 'language_id': language_id},
-        {'tag': 'textbox_final_result_new_game_proposition', 'original_text': "\nJeśli chcesz zagrać jeszcze raz kliknij przycisk 'Rozpocznij grę'", 'language_id': language_id},
-        {'tag': 'textbox_final_result_million', 'original_text': 'Milion !!!', 'language_id': language_id},
-        {'tag': 'textbox_value_of_question', 'original_text': 'Pytanie za ', 'language_id': language_id},
-        {'tag': 'textbox_lifebuoy_lifebuoy_used', 'original_text': 'To koło ratunkowe zostało już użyte', 'language_id': language_id},
-        {'tag': 'textbox_lifebuoy_call_friend_result', 'original_text': 'Wydaje mi się, że jest to odpowiedź ', 'language_id': language_id}
+        {'tag': 'button_text', 'text': 'Rozpocznij grę', 'language_id': language_id},
+        {'tag': 'group_box_name', 'text': 'Zasady', 'language_id': language_id},
+        {'tag': 'MainWindowTitle', 'text': 'Milionerzy', 'language_id': language_id},
+        {'tag': 'fifty_fifty_button_text', 'text': '50 / 50', 'language_id': language_id},
+        {'tag': 'call_friend_button_text', 'text': 'Telefon do przyjaciela', 'language_id': language_id},
+        {'tag': 'ask_audience_button_text', 'text': 'Pytanie do publiczności', 'language_id': language_id},
+        {'tag': 'start_game_button_text', 'text': 'Rozpocznij grę', 'language_id': language_id},
+        {'tag': 'MillionairesGroupBoxTitle', 'text': 'Pytanie', 'language_id': language_id},
+        {'tag': 'TakingDecisionGroupBoxTitle', 'text': 'Czy chcesz grać dalej?', 'language_id': language_id},
+        {'tag': 'LifebuoysGroupBoxTitle', 'text': 'Koła ratunkowe', 'language_id': language_id},
+        {'tag': 'ValueOfQuestionGroupBoxTitle', 'text': 'Wartość pytania', 'language_id': language_id},
+        {'tag': 'FinalResultGroupBoxTitle', 'text': 'Wynik gry', 'language_id': language_id},
+        {'tag': 'textbox_checking_correctness_correct_answer', 'text': 'Brawo, to jest poprawna odpowiedź! :)', 'language_id': language_id},
+        {'tag': 'textbox_checking_correctness_wrong_answer', 'text': 'Niestety, jest to zła odpowiedź! :(\nPoprawną odpowiedzią była odpowiedź ', 'language_id': language_id},
+        {'tag': 'textbox_checking_correctness_no_answer', 'text': 'Poprawną odpowiedzią była odpowiedź ', 'language_id': language_id},
+        {'tag': 'textbox_final_result_victory', 'text': 'Wygrałeś/łaś ', 'language_id': language_id},
+        {'tag': 'textbox_final_result_no_victory', 'text': 'Niestety nic dziś nie wygrałeś/łaś :(', 'language_id': language_id},
+        {'tag': 'textbox_final_result_new_game_proposition', 'text': "\nJeśli chcesz zagrać jeszcze raz kliknij przycisk 'Rozpocznij grę'", 'language_id': language_id},
+        {'tag': 'textbox_final_result_million', 'text': 'Milion !!!', 'language_id': language_id},
+        {'tag': 'textbox_value_of_question', 'text': 'Pytanie za ', 'language_id': language_id},
+        {'tag': 'textbox_lifebuoy_lifebuoy_used', 'text': 'To koło ratunkowe zostało już użyte', 'language_id': language_id},
+        {'tag': 'textbox_lifebuoy_call_friend_result', 'text': 'Wydaje mi się, że jest to odpowiedź ', 'language_id': language_id}
     ])
 
     # execute queries

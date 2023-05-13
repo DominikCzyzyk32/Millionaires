@@ -35,3 +35,5 @@ def translate_app(lang):
         translated_app_content_query = insert(AppContent).values(translated_app_content)
         db.execute(translated_app_content_query)
         db.commit()
+
+translate_app('de')
