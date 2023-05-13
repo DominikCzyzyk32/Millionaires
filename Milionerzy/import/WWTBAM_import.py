@@ -1,9 +1,9 @@
 # WWTBAM JSON File
 # https://pastebin.com/QRGzxxEy
 from sqlalchemy import create_engine
-from sqlalchemy import MetaData, Table, select, insert
+from sqlalchemy import select, insert
 from sqlalchemy.orm import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean, Date, ForeignKey, Sequence, CheckConstraint, UniqueConstraint
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, CheckConstraint, UniqueConstraint
 import os
 import json
 
