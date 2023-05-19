@@ -5,10 +5,11 @@ from sqlalchemy import select, insert, and_
 import urllib.request
 from db_init import Languages, Questions
 from translate_questions import translate_questions
+from include.constants import database_path
 
 
 def select_questions(lang):
-    engine = create_engine("postgresql://postgres@localhost/millionaires_v3")
+    engine = create_engine(database_path)
     db = engine.connect()
 
     questions = parse_db_select_response(
@@ -50,6 +51,7 @@ def parse_db_select_response(response):
                                 'correct_answer': question[3], 'wrong_answer_1': question[4], 
                                 'wrong_answer_2': question[5], 'wrong_answer_3': question[6]})
     return parsed_response
+
 
 def is_internet_connection(host='http://google.com'):
     try:

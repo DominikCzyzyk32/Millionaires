@@ -4,10 +4,11 @@ from sqlalchemy import select, insert, and_
 from sqlalchemy.orm import declarative_base
 from time import sleep
 from db_init import Languages, Questions
+from include.constants import database_path
 
 
 def translate_questions(questions, lang):
-    engine = create_engine("postgresql://postgres@localhost/millionaires_v3")
+    engine = create_engine(database_path)
     db = engine.connect()
 
     lang_exists = db.execute(select(Languages).where(Languages.name == lang)).fetchall()

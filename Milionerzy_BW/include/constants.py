@@ -24,4 +24,4 @@ LANGUAGES = Language(
 
 currency_dict = {LANGUAGES.german: 'EUR', LANGUAGES.english: 'GBP'}
 
-database_path = "postgresql://postgres@localhost/millionaires_v12"
+database_path = 'postgresql://postgres@localhost/millionaires'

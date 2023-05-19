@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy import select
-from db.db_init import Languages, Questions, AppContent
+from include.db_init import Languages, Questions, AppContent
 from include.constants import database_path
 from include.translate import translate_app
 
