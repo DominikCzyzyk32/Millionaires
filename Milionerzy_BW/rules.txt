@@ -1,0 +1,14 @@
+Zasady:
+Twoim zadaniem jest odpowiedzieć poprawnie kolejno na dwanaście zamkniętych pytań z odpowiedziami A, B, C, D.
+Wartość każdego pytania będzie się wyświetlała w prawym dolnym rogu aplikacji.
+Po otrymaniu pytania jest możliwość zrezygnowania z gry i zabrania dotychczsowo wygranych pieniędzy.
+Istnieją dwa progi gwarantowane:
+* 1 000 zł - po odpowiedzeniu na dwa pytania
+* 40 000 zł po odpowiedzeniu na siedem pytań
+W przypadku błędnej odpowiedzi, gracz otrzymuje tyle, ile wynosi najwyższy próg gwarantowany jaki osiągnął (jeśli udzielono błędnej odpowiedzi na pierwsze lub drugie pytanie gracz nic nie wygrywa).
+Gracz ma do dyspozycji 3 koła ratunkowe (każde z nich może użyć tylko raz w trakcie gry):
+* 50 / 50 - odrzuca dwie błędne odpowiedzi
+* telefon do przyjaciela - gracz otrzymuje informację o tym, która odpowiedź (zdaniem wirtualnego przyjaciela) jest poprawna 
+* pytanie do publiczności - gracz otrzymuje wykres słupkowy przedstawiający wynik głosowania publiczności w studiu
+
+Życzymy miłej gry i dużej wygranej :)
