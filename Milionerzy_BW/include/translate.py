@@ -1,3 +1,4 @@
+import urllib.request
 from sqlalchemy import create_engine
 from sqlalchemy import select, insert, and_
 from include.db_init import Languages, AppContent, Questions
