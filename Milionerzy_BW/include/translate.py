@@ -28,7 +28,7 @@ def translate_app(lang):
                 translated_text = currency_dict[lang]
             else:
                 text = app_text[3]
-                translated_text = deep_translator.translate(text)
+                translated_text = make_translation(deep_translator, text)
                 if text[0].isupper() and not translated_text[0].isupper():
                     translated_text = translated_text[0].upper() + translated_text[1:]
 
@@ -65,11 +65,11 @@ def translate_questions(questions, lang):
                 Languages.id == question[1])).fetchall()[0][0]
             deep_translator = GoogleTranslator(source=original_language_name, target=lang)
 
-            quest = deep_translator.translate(question[2])
-            correct = deep_translator.translate(question[3])
-            wrong_1 = deep_translator.translate(question[4])
-            wrong_2 = deep_translator.translate(question[5])
-            wrong_3 = deep_translator.translate(question[6])
+            quest = make_translation(deep_translator, question[2])
+            correct = make_translation(deep_translator, question[3])
+            wrong_1 = make_translation(deep_translator, question[4])
+            wrong_2 = make_translation(deep_translator, question[5])
+            wrong_3 = make_translation(deep_translator, question[6])
 
         translated_questions.append({'language_id': language_id, 'question': quest, 'correct_answer': correct,
                                      'wrong_answer_1': wrong_1, 'wrong_answer_2': wrong_2, 'wrong_answer_3': wrong_3})
@@ -96,3 +96,10 @@ def check_internet_connection(host='http://google.com'):
         return True
     except:
         return False
+
+
+def make_translation(translator, text):
+    try:
+        return translator.translate(text)
+    except:
+        return make_translation(translator, text)

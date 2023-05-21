@@ -1,6 +1,6 @@
 from include.ask_audience import AskAudienceWindow
 from include.formats import BACKGROUND_COLORS, FONTS
-from include.constants import QUESTION_VALUES, LANGUAGES, database_path
+from include.constants import QUESTION_VALUES, LANGUAGES, database_path, INFO
 from include.load_from_database import load_app_content, load_questions
 from include.db_init import db_init
 from PyQt5.QtWidgets import QApplication, QGridLayout, QGroupBox, QDialog, QPushButton, QVBoxLayout, QTextBrowser, QLabel, QMainWindow, QMessageBox
@@ -18,6 +18,7 @@ were_rules_read = False
 was_language_chosen = False
 language = None
 application_text = None
+questions_global = None
 
 
 def merge_value_with_currency(value: str, currency: str) -> str:
@@ -276,6 +277,7 @@ class Millionaires(QDialog):
         self.answer_to_button_mapping[self.correct_answer[0]].setStyleSheet(BACKGROUND_COLORS.green)
 
     def game_starts(self):
+        global language, questions_global
         self.textbox_final_result.setText('')
         self.amount_of_points = 0
         self.get_ready_to_ask_question()
@@ -286,11 +288,19 @@ class Millionaires(QDialog):
         self.was_fifty_fifty_lifebuoy_used = False
         self.was_call_friend_lifebuoy_used = False
         self.was_ask_audience_lifebuoy_used = False
-        try:
-            self.questions = load_questions(language)
-        except ValueError as error:
-            show_messagebox(error)
-            return
+
+        if questions_global is not None:
+            self.questions = questions_global
+            questions_global = None
+        else:
+            try:
+                self.textbox_question.setText(INFO.questions[language])
+                if self.my_app is not None:
+                    self.my_app.processEvents()
+                self.questions = load_questions(language)
+            except ValueError as error:
+                show_messagebox(error)
+                return
 
         self.was_game_started = True
         self.make_sound('music/game_starts_sound.mp3')
@@ -447,9 +457,9 @@ def show_messagebox(text):
 
 
 def load_text():
-    global language, application_text
+    global language, application_text, questions_global
     application_text = load_app_content(language)
-    load_questions(language)
+    questions_global = load_questions(language)
 
 
 def start_rules():
@@ -467,6 +477,8 @@ def start_rules():
 class LanguageWindow(QDialog):
     def __init__(self):
         global language
+
+        self.my_app = None
 
         language = LANGUAGES.polish
 
@@ -488,10 +500,12 @@ class LanguageWindow(QDialog):
         self.german_button = QPushButton("Deutsch")
         self.confirmation_button = QPushButton("Zatwierdź")
 
+        self.tmp_button = QPushButton()
+
         self.polish_button.clicked.connect(self.language_polish)
         self.english_button.clicked.connect(self.language_english)
         self.german_button.clicked.connect(self.language_german)
-        self.confirmation_button.clicked.connect(start_rules)
+        self.confirmation_button.clicked.connect(self._start_rules)
         # ------------
 
         self.LanguageGroupBox = QGroupBox("Wybierz język")
@@ -507,10 +521,18 @@ class LanguageWindow(QDialog):
         main_layout = QGridLayout()
         main_layout.addWidget(self.LanguageGroupBox, 0, 0)
         main_layout.addWidget(self.confirmation_button, 1, 0)
+        main_layout.addWidget(self.tmp_button, 2, 0)
         self.setLayout(main_layout)
         self.setWindowTitle('Menu')
         self.setWindowIcon(QIcon('milionerzy_logo.png'))
         self.show()
+
+    def _start_rules(self):
+        global language
+        self.tmp_button.setText(INFO.application[language])
+        if self.my_app is not None:
+            self.my_app.processEvents()
+        start_rules()
 
     def set_formatting(self):
         for button in [self.polish_button, self.english_button, self.german_button, self.confirmation_button]:
@@ -603,6 +625,7 @@ class RulesWindow(QDialog):
 if __name__ == '__main__':
     language_window = QApplication(sys.argv)
     my_window_language = LanguageWindow()
+    my_window_language.my_app = language_window
     language_window.exec_()
     language_window.closeAllWindows()
 

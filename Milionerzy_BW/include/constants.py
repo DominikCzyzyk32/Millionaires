@@ -44,4 +44,18 @@ ERRORS = Errors(
     }
 )
 
+Info = namedtuple('Info', ['application', 'questions'])
+INFO = Info(
+    application={
+        LANGUAGES.polish: 'Aplikacja w trakcie tlumaczenia...',
+        LANGUAGES.english: 'Application is being translated...',
+        LANGUAGES.german: 'Die Anwendung wird ubersetzt...'
+    },
+    questions={
+        LANGUAGES.polish: 'Trwa tlumaczenie pytan...',
+        LANGUAGES.english: 'Questions are being translated...',
+        LANGUAGES.german: 'Die Fragen werden ubersetzt...'
+    }
+)
+
 database_path = 'postgresql://postgres@localhost/millionaires'
