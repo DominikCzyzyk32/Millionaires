@@ -51,22 +51,8 @@ class Questions(Base):
         return "<Questions(id={0}, language_id={1}, question={2}, correct_answer={3}, wrong_answer_1={4}, wrong_answer_2={5}, wrong_answer_3={6}, used={7})>".format(
             self.id, self.language_id, self.question, self.correct_answer, self.wrong_answer_1, self.wrong_answer_2, self.wrong_answer_3, self.used)
     
-# class QuestionTranslations(Base):
-#     __tablename__ = 'QuestionTranslations'
-#     id = Column(Integer, primary_key=True)
-#     question_id = Column(Integer, ForeignKey("Questions.id"))
-#     language_id = Column(Integer, ForeignKey("Languages.id"))
-#     question = Column(String(500))
-#     correct_answer = Column(String(50))
-#     wrong_answer_1 = Column(String(50))
-#     wrong_answer_2 = Column(String(50))
-#     wrong_answer_3 = Column(String(50))
-
-#     def __repr__(self):
-#         return "<QuestionTranslations(id={0}, question_id={1}, language_id={2}, question={3}, correct_answer={4}, wrong_answer_1={5}, wrong_answer_2={6}, wrong_answer_2={7})>".format(
-#             self.id, self.question_id, self.language_id, self.question, self.correct_answer, self.wrong_answer_1, self.wrong_answer_2, self.wrong_answer_3)
-
-
+       
+       
 def db_init():
     # connect to database
     engine = create_engine(database_path)

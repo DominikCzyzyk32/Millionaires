@@ -1,6 +1,7 @@
 import urllib.request
 from sqlalchemy import create_engine
-from sqlalchemy import select, and_
+from sqlalchemy import select, update, and_
+from sqlalchemy.sql.expression import func
 from include.db_init import Languages, Questions, AppContent
 from include.constants import database_path, ERRORS
 from include.translate import translate_app, translate_questions
@@ -88,14 +89,14 @@ def load_questions(lang):
 
     questions = parse_question_content(
         db.execute(select(Questions).join(Languages, Questions.language_id == Languages.id).where(
-                and_(Languages.name == lang, Questions.used == False)).limit(12)).fetchall())
+                and_(Languages.name == lang, Questions.used == False)).order_by(func.random()).limit(12)).fetchall())
     num_of_questions = len(questions)
     if num_of_questions < 12:
         num_of_necessary_questions = 12 - num_of_questions
         if check_internet_connection():
             questions_to_translate = db.execute(
                 select(Questions).join(Languages, Questions.language_id == Languages.id).where(
-                    Questions.used == False).limit(num_of_necessary_questions)).fetchall()
+                    Questions.used == False).order_by(func.random()).limit(num_of_necessary_questions)).fetchall()
             translated_questions = translate_questions(questions_to_translate, lang)
             questions += translated_questions
             if len(questions) < 12:
@@ -103,8 +104,7 @@ def load_questions(lang):
                 seen_questions = parse_question_content(
                     db.execute(
                         select(Questions).join(Languages, Questions.language_id == Languages.id).where(
-                            and_(Languages.name == lang, Questions.used == True)).limit(num_of_necessary_questions))
-                        .fetchall())
+                            and_(Languages.name == lang, Questions.used == True)).order_by(func.random()).limit(num_of_necessary_questions)).fetchall())
                 questions += seen_questions
             if len(questions) < 12:
                 raise ValueError(ERRORS.no_questions[lang])
@@ -112,10 +112,14 @@ def load_questions(lang):
             seen_questions = parse_question_content(
                 db.execute(
                     select(Questions).join(Languages, Questions.language_id == Languages.id).where(
-                        and_(Languages.name == lang, Questions.used == True)).limit(num_of_necessary_questions)).fetchall())
+                        and_(Languages.name == lang, Questions.used == True)).order_by(func.random()).limit(num_of_necessary_questions)).fetchall())
             questions += seen_questions
             if len(questions) < 12:
                 raise ValueError(ERRORS.no_questions_offline[lang])
+
+    used_questions = [question['question'] for question in questions]
+    db.execute(update(Questions).where(Questions.question.in_(used_questions)).values(used=True))
+    db.commit()
 
     return questions
 
