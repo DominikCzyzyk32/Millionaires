@@ -24,4 +24,24 @@ LANGUAGES = Language(
 
 currency_dict = {LANGUAGES.german: 'EUR', LANGUAGES.english: 'GBP'}
 
+Errors = namedtuple('Errors', ['no_questions_offline', 'app_not_translated', 'no_questions'])
+
+ERRORS = Errors(
+    no_questions_offline={
+        LANGUAGES.polish: "Nie mozna grac offline. Za malo pytan po polsku. Jesli chcesz grac, musisz przejsc do trybu online lub zmienic jezyk.",
+        LANGUAGES.english: "Cannot play offline. Not enough questions in english. If you want to play you must get online or switch language.",
+        LANGUAGES.german: "Kann nicht offline spielen. Nicht genug Fragen auf Deutsch. Wenn Sie spielen wollen, mussen Sie online gehen oder die Sprache wechseln."
+    },
+    app_not_translated={
+        LANGUAGES.polish: "Nie mozna grac offline. Aplikacja nie zostala przetlumaczona na jezyk polski. Jesli chcesz grac, musisz przejsc do trybu online lub zmienic jezyk.",
+        LANGUAGES.english: "Cannot play offline. Application not translated to english. If you want to play you must get online or switch language.",
+        LANGUAGES.german: "Kann nicht offline spielen. Anwendung nicht ins Deutsche ubersetzt. Wenn Sie spielen wollen, mussen Sie online gehen oder die Sprache wechseln."
+    },
+    no_questions={
+        LANGUAGES.polish: "Nie mozna zagrac w gre. Za malo pytan w bazie danych.",
+        LANGUAGES.english: "Cannot play the game. Not enough questions in database.",
+        LANGUAGES.german: "Ich kann das Spiel nicht spielen. Nicht genug Fragen in der Datenbank."
+    }
+)
+
 database_path = 'postgresql://postgres@localhost/millionaires'

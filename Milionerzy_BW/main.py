@@ -1,17 +1,17 @@
-from include.asking_question import give_a_question_with_answers_as_tuple, set_all_questions_as_ready_to_ask_if_necessary
 from include.ask_audience import AskAudienceWindow
-from include.giving_rules import give_rules
 from include.formats import BACKGROUND_COLORS, FONTS
 from include.constants import QUESTION_VALUES, LANGUAGES, database_path
-from include.load_from_database import load_app_content
+from include.load_from_database import load_app_content, load_questions
 from include.db_init import db_init
-from PyQt5.QtWidgets import QApplication, QGridLayout, QGroupBox, QDialog, QPushButton, QVBoxLayout, QTextBrowser, QLabel, QMainWindow
+from PyQt5.QtWidgets import QApplication, QGridLayout, QGroupBox, QDialog, QPushButton, QVBoxLayout, QTextBrowser, QLabel, QMainWindow, QMessageBox
 from PyQt5.QtGui import QFont, QIcon
 import random as rm
 import time
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists
+import random
+
 # from playsound import playsound
 
 were_rules_read = False
@@ -33,6 +33,7 @@ class Millionaires(QDialog):
         self.app_texts = application_text['MillionairesWindow']
 
         self.my_app = None
+        self.questions = []
 
         self.temp_ans_A = ''
         self.temp_ans_B = ''
@@ -179,7 +180,21 @@ class Millionaires(QDialog):
     def ask_question(self):
         self.get_ready_to_ask_question()
 
-        question, ans_A, ans_B, ans_C, ans_D, correct_ans = give_a_question_with_answers_as_tuple()
+        question_content = random.choice(self.questions)
+        self.questions.remove(question_content)
+
+        question = question_content['question']
+        correct_ans = question_content['correct_answer']
+        answers = [question_content['correct_answer'], question_content['wrong_answer_1'],
+                   question_content['wrong_answer_2'], question_content['wrong_answer_3']]
+
+        ans_A = rm.choice(answers)
+        answers.remove(ans_A)
+        ans_B = rm.choice(answers)
+        answers.remove(ans_B)
+        ans_C = rm.choice(answers)
+        answers.remove(ans_C)
+        ans_D = answers[0]
 
         self.temp_ans_A = 'A. ' + ans_A
         self.temp_ans_B = 'B. ' + ans_B
@@ -264,15 +279,20 @@ class Millionaires(QDialog):
         self.textbox_final_result.setText('')
         self.amount_of_points = 0
         self.get_ready_to_ask_question()
-
+        self.questions = dict()
         self.fifty_fifty_lifebuoy_button.setStyleSheet(BACKGROUND_COLORS.gray)
         self.call_friend_lifebuoy_button.setStyleSheet(BACKGROUND_COLORS.gray)
         self.ask_audience_lifebuoy_button.setStyleSheet(BACKGROUND_COLORS.gray)
         self.was_fifty_fifty_lifebuoy_used = False
         self.was_call_friend_lifebuoy_used = False
         self.was_ask_audience_lifebuoy_used = False
+        try:
+            self.questions = load_questions(language)
+        except ValueError as error:
+            show_messagebox(error)
+            return
+
         self.was_game_started = True
-        set_all_questions_as_ready_to_ask_if_necessary()  # TODO: Zmodyfikować jezeli będziemy dodawać kolumnę 'Czy uzyte', a jeżeli nie to wywalić
         self.make_sound('music/game_starts_sound.mp3')
         self.ask_question()
 
@@ -409,13 +429,35 @@ class Millionaires(QDialog):
             return '0'
 
 
+def show_messagebox(text):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Critical)
+
+    # setting message for Message Box
+    msg.setText(str(text))
+
+    # setting Message box window title
+    msg.setWindowTitle("Error")
+
+    # declaring buttons on Message Box
+    msg.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+
+    # start the app
+    retval = msg.exec_()
+
+
 def load_text():
     global language, application_text
     application_text = load_app_content(language)
+    load_questions(language)
 
 
 def start_rules():
-    load_text()
+    try:
+        load_text()
+    except ValueError as error:
+        show_messagebox(error)
+        return
 
     global was_language_chosen
     was_language_chosen = True
@@ -438,8 +480,6 @@ class LanguageWindow(QDialog):
         if not database_exists(engine.url):
             db_init()
         # ------------
-
-
 
         # Buttons
         # ------------
@@ -577,8 +617,3 @@ if __name__ == '__main__':
         millionaires_app = Millionaires()
         millionaires_app.my_app = app_
         sys.exit(app_.exec_())
-
-    # app_ = QApplication(sys.argv)
-    # millionaires_app = Millionaires()
-    # millionaires_app.my_app = app_
-    # sys.exit(app_.exec_())

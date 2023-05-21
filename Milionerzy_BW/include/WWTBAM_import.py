@@ -6,7 +6,10 @@ from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, CheckConstraint, UniqueConstraint
 import os
 import json
+from include.constants import database_path
+# from include.db_init import Languages, Questions
 Base = declarative_base()
+
 
 class Languages(Base):
     __tablename__ = 'Languages'
@@ -20,7 +23,8 @@ class Languages(Base):
     def __repr__(self):
         return "<Languages(id={0}, name={1})>".format(
             self.id, self.name)
-    
+
+
 class Questions(Base):
     __tablename__ = 'Questions'
     id = Column(Integer, primary_key=True)
@@ -38,7 +42,7 @@ class Questions(Base):
 
 
 def WWTBAM_import():
-    engine = create_engine("postgresql://postgres@localhost/millionaires_v3")
+    engine = create_engine(database_path)
     db = engine.connect()
 
     lang_exists = db.execute(select(Languages).where(Languages.name == 'en')).fetchall()
@@ -47,7 +51,7 @@ def WWTBAM_import():
         db.execute(lang_query)
     language_id = db.execute(select(Languages.id).where(Languages.name == 'en')).fetchall()[0][0]
 
-    file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'WWTBAM.json'))
+    file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'WWTBAM.json'))
     data = json.load(file)
     quests = []
 

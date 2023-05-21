@@ -4,6 +4,8 @@ from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, CheckConstraint, UniqueConstraint
 from sqlalchemy import MetaData, Table, insert
 from include.constants import database_path
+from include.WWTBAM_import import WWTBAM_import
+
 Base = declarative_base()
 
 
@@ -133,3 +135,5 @@ def db_init():
     db.execute(languages_query)
     db.execute(app_content_query)
     db.commit()
+
+    WWTBAM_import()
