@@ -12,7 +12,7 @@ from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists
 import random
 
-# from playsound import playsound
+from playsound import playsound
 
 were_rules_read = False
 was_language_chosen = False
@@ -134,9 +134,8 @@ class Millionaires(QDialog):
             group_box.setFont(self.my_font)
 
     def make_sound(self, mp3_path: str):
-        # self.my_app.processEvents()
-        # playsound('music/milion_won_sound.mp3')
-        pass
+        self.my_app.processEvents()
+        playsound(mp3_path)
 
     def check_answer(self, correct_answer: str, my_answer: str) -> bool:
         self.show_correct_answer()

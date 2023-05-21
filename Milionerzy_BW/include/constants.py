@@ -47,9 +47,9 @@ ERRORS = Errors(
 Info = namedtuple('Info', ['application', 'questions'])
 INFO = Info(
     application={
-        LANGUAGES.polish: 'Aplikacja w trakcie tlumaczenia...',
-        LANGUAGES.english: 'Application is being translated...',
-        LANGUAGES.german: 'Die Anwendung wird ubersetzt...'
+        LANGUAGES.polish: 'Przygotowywanie rozgrywki...',
+        LANGUAGES.english: 'Preparing the game...',
+        LANGUAGES.german: 'Das Spiel vorbereiten...'
     },
     questions={
         LANGUAGES.polish: 'Trwa tlumaczenie pytan...',
