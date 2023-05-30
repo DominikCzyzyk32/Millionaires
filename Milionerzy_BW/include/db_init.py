@@ -5,6 +5,7 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, CheckConstr
 from sqlalchemy import MetaData, Table, insert
 from include.constants import database_path
 from include.WWTBAM_import import WWTBAM_import
+from include.bahadiri_import import bahadiri_import
 
 Base = declarative_base()
 
@@ -123,3 +124,4 @@ def db_init():
     db.commit()
 
     WWTBAM_import()
+    bahadiri_import()

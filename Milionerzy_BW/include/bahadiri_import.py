@@ -4,8 +4,9 @@ from sqlalchemy import create_engine
 from sqlalchemy import select, insert
 from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, CheckConstraint, UniqueConstraint
+import pandas as pd
 import os
-import json
+import csv
 from include.constants import database_path
 # from include.db_init import Languages, Questions
 Base = declarative_base()
@@ -41,24 +42,23 @@ class Questions(Base):
             self.id, self.language_id, self.question, self.correct_answer, self.wrong_answer_1, self.wrong_answer_2, self.wrong_answer_3, self.used)
 
 
-def WWTBAM_import():
+def bahadiri_import():
     engine = create_engine(database_path)
     db = engine.connect()
 
-    lang_exists = db.execute(select(Languages).where(Languages.name == 'en')).fetchall()
+    lang_exists = db.execute(select(Languages).where(Languages.name == 'tr')).fetchall()
     if not lang_exists:
-        lang_query = insert(Languages).values(name='en')
+        lang_query = insert(Languages).values(name='tr')
         db.execute(lang_query)
-    language_id = db.execute(select(Languages.id).where(Languages.name == 'en')).fetchall()[0][0]
+    language_id = db.execute(select(Languages.id).where(Languages.name == 'tr')).fetchall()[0][0]
 
-    file = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'WWTBAM.json'))
-    data = json.load(file)
+    file = pd.read_csv("bahidiri_turkish.csv", names=["id", "category_id", "question", "date", "A", "B", "C", "D", "answer", "subcategory_id"])
     quests = []
 
-    for row in data:
-        quest = row["question"]
-        answers = [row["A"], row["B"], row["C"], row["D"]]
-        correct_answer = row[row["answer"]]
+    for _, question in file.iterrows():
+        quest = question["question"]
+        answers = [question["A"], question["B"], question["C"], question["D"]]
+        correct_answer = question[question["answer"]]
         answers.remove(correct_answer)
         wrong_answer_1 = answers[0]
         wrong_answer_2 = answers[1]
